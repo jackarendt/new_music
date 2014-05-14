@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JARootViewController.h"
+
 
 @interface JAAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1705B8831922F42100E121D0 /* JARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1705B8821922F42100E121D0 /* JARootViewController.m */; };
 		2E223A121922EB22001051FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A111922EB22001051FA /* Foundation.framework */; };
 		2E223A141922EB22001051FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A131922EB22001051FA /* CoreGraphics.framework */; };
 		2E223A161922EB22001051FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A151922EB22001051FA /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1705B8811922F42100E121D0 /* JARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARootViewController.h; sourceTree = "<group>"; };
+		1705B8821922F42100E121D0 /* JARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARootViewController.m; sourceTree = "<group>"; };
 		2E223A0E1922EB22001051FA /* Music Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E223A111922EB22001051FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E223A131922EB22001051FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 			children = (
 				2E223A221922EB22001051FA /* JAAppDelegate.h */,
 				2E223A231922EB22001051FA /* JAAppDelegate.m */,
+				1705B8811922F42100E121D0 /* JARootViewController.h */,
+				1705B8821922F42100E121D0 /* JARootViewController.m */,
 				2E223A281922EB22001051FA /* Images.xcassets */,
 				2E223A251922EB22001051FA /* Music_Queue.xcdatamodeld */,
 				2E223A1A1922EB22001051FA /* Supporting Files */,
@@ -252,6 +257,7 @@
 				2E223A201922EB22001051FA /* main.m in Sources */,
 				2E223A271922EB22001051FA /* Music_Queue.xcdatamodeld in Sources */,
 				2E223A241922EB22001051FA /* JAAppDelegate.m in Sources */,
+				1705B8831922F42100E121D0 /* JARootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +456,7 @@
 				2E223A421922EB22001051FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E223A431922EB22001051FA /* Build configuration list for PBXNativeTarget "Music QueueTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +465,7 @@
 				2E223A451922EB22001051FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
