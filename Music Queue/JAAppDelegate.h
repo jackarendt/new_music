@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "JARootViewController.h"
+#import "JACurrentViewController.h"
+#import "JAPowerListViewController.h"
+#import "JACreatorViewController.h"
 
 
-@interface JAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface JAAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate> {
+    UITabBarController *tabBarController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

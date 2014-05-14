@@ -23,6 +23,15 @@
 		2E223A331922EB22001051FA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A171922EB22001051FA /* CoreData.framework */; };
 		2E223A3B1922EB22001051FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E223A391922EB22001051FA /* InfoPlist.strings */; };
 		2E223A3D1922EB22001051FA /* Music_QueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E223A3C1922EB22001051FA /* Music_QueueTests.m */; };
+		2E44392C192312E900E2B930 /* JACurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44392B192312E900E2B930 /* JACurrentViewController.m */; };
+		2E44392F1923140900E2B930 /* JAPowerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44392E1923140900E2B930 /* JAPowerListViewController.m */; };
+		2E443932192314A900E2B930 /* JACreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E443931192314A900E2B930 /* JACreatorViewController.m */; };
+		2E4439341923266500E2B930 /* Now-Playing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4439331923266500E2B930 /* Now-Playing@2x.png */; };
+		2E44393819232A5000E2B930 /* Create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E44393719232A5000E2B930 /* Create@2x.png */; };
+		2E44393A19232C8B00E2B930 /* power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E44393919232C8B00E2B930 /* power@2x.png */; };
+		2EAAD961192342DC004CC170 /* songbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EAAD960192342DC004CC170 /* songbackground.jpg */; };
+		2EAAD96319234B6F004CC170 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAAD96219234B6F004CC170 /* QuartzCore.framework */; };
+		2EAAD96519234CC3004CC170 /* demoCover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EAAD96419234CC3004CC170 /* demoCover.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +65,18 @@
 		2E223A381922EB22001051FA /* Music QueueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music QueueTests-Info.plist"; sourceTree = "<group>"; };
 		2E223A3A1922EB22001051FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E223A3C1922EB22001051FA /* Music_QueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Music_QueueTests.m; sourceTree = "<group>"; };
+		2E44392A192312E900E2B930 /* JACurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JACurrentViewController.h; sourceTree = "<group>"; };
+		2E44392B192312E900E2B930 /* JACurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JACurrentViewController.m; sourceTree = "<group>"; };
+		2E44392D1923140900E2B930 /* JAPowerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAPowerListViewController.h; sourceTree = "<group>"; };
+		2E44392E1923140900E2B930 /* JAPowerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAPowerListViewController.m; sourceTree = "<group>"; };
+		2E443930192314A900E2B930 /* JACreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JACreatorViewController.h; sourceTree = "<group>"; };
+		2E443931192314A900E2B930 /* JACreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JACreatorViewController.m; sourceTree = "<group>"; };
+		2E4439331923266500E2B930 /* Now-Playing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Now-Playing@2x.png"; sourceTree = SOURCE_ROOT; };
+		2E44393719232A5000E2B930 /* Create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Create@2x.png"; path = "../Create@2x.png"; sourceTree = "<group>"; };
+		2E44393919232C8B00E2B930 /* power@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "power@2x.png"; path = "../power@2x.png"; sourceTree = "<group>"; };
+		2EAAD960192342DC004CC170 /* songbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = songbackground.jpg; path = ../songbackground.jpg; sourceTree = "<group>"; };
+		2EAAD96219234B6F004CC170 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2EAAD96419234CC3004CC170 /* demoCover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demoCover.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAAD96319234B6F004CC170 /* QuartzCore.framework in Frameworks */,
 				2E223A141922EB22001051FA /* CoreGraphics.framework in Frameworks */,
 				2E223A181922EB22001051FA /* CoreData.framework in Frameworks */,
 				2E223A161922EB22001051FA /* UIKit.framework in Frameworks */,
@@ -87,6 +109,7 @@
 		2E223A051922EB22001051FA = {
 			isa = PBXGroup;
 			children = (
+				2EAAD96419234CC3004CC170 /* demoCover.jpg */,
 				2E223A191922EB22001051FA /* Music Queue */,
 				2E223A361922EB22001051FA /* Music QueueTests */,
 				2E223A101922EB22001051FA /* Frameworks */,
@@ -106,6 +129,7 @@
 		2E223A101922EB22001051FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EAAD96219234B6F004CC170 /* QuartzCore.framework */,
 				2E223A111922EB22001051FA /* Foundation.framework */,
 				2E223A131922EB22001051FA /* CoreGraphics.framework */,
 				2E223A151922EB22001051FA /* UIKit.framework */,
@@ -120,6 +144,12 @@
 			children = (
 				2E223A221922EB22001051FA /* JAAppDelegate.h */,
 				2E223A231922EB22001051FA /* JAAppDelegate.m */,
+				2E443930192314A900E2B930 /* JACreatorViewController.h */,
+				2E443931192314A900E2B930 /* JACreatorViewController.m */,
+				2E44392D1923140900E2B930 /* JAPowerListViewController.h */,
+				2E44392E1923140900E2B930 /* JAPowerListViewController.m */,
+				2E44392A192312E900E2B930 /* JACurrentViewController.h */,
+				2E44392B192312E900E2B930 /* JACurrentViewController.m */,
 				1705B8811922F42100E121D0 /* JARootViewController.h */,
 				1705B8821922F42100E121D0 /* JARootViewController.m */,
 				2E223A281922EB22001051FA /* Images.xcassets */,
@@ -132,6 +162,10 @@
 		2E223A1A1922EB22001051FA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2EAAD960192342DC004CC170 /* songbackground.jpg */,
+				2E44393919232C8B00E2B930 /* power@2x.png */,
+				2E44393719232A5000E2B930 /* Create@2x.png */,
+				2E4439331923266500E2B930 /* Now-Playing@2x.png */,
 				2E223A1B1922EB22001051FA /* Music Queue-Info.plist */,
 				2E223A1C1922EB22001051FA /* InfoPlist.strings */,
 				2E223A1F1922EB22001051FA /* main.m */,
@@ -206,6 +240,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "John Arendt";
 				TargetAttributes = {
+					2E223A0D1922EB22001051FA = {
+						DevelopmentTeam = 35RV9RPQY7;
+					};
 					2E223A2D1922EB22001051FA = {
 						TestTargetID = 2E223A0D1922EB22001051FA;
 					};
@@ -234,8 +271,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E4439341923266500E2B930 /* Now-Playing@2x.png in Resources */,
+				2E44393A19232C8B00E2B930 /* power@2x.png in Resources */,
+				2EAAD961192342DC004CC170 /* songbackground.jpg in Resources */,
 				2E223A1E1922EB22001051FA /* InfoPlist.strings in Resources */,
+				2EAAD96519234CC3004CC170 /* demoCover.jpg in Resources */,
 				2E223A291922EB22001051FA /* Images.xcassets in Resources */,
+				2E44393819232A5000E2B930 /* Create@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E223A201922EB22001051FA /* main.m in Sources */,
+				2E44392F1923140900E2B930 /* JAPowerListViewController.m in Sources */,
+				2E443932192314A900E2B930 /* JACreatorViewController.m in Sources */,
 				2E223A271922EB22001051FA /* Music_Queue.xcdatamodeld in Sources */,
 				2E223A241922EB22001051FA /* JAAppDelegate.m in Sources */,
+				2E44392C192312E900E2B930 /* JACurrentViewController.m in Sources */,
 				1705B8831922F42100E121D0 /* JARootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,10 +421,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Music Queue/Music Queue-Prefix.pch";
 				INFOPLIST_FILE = "Music Queue/Music Queue-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +437,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Music Queue/Music Queue-Prefix.pch";
 				INFOPLIST_FILE = "Music Queue/Music Queue-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

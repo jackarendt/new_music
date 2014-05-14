@@ -20,10 +20,50 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[JARootViewController alloc] init]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    self.window.rootViewController = navigationController;
+    tabBarController = [[UITabBarController alloc] init];
+    tabBarController.delegate=self;
     
+    [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+    //[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    //Now Playing View Controller setup
+    
+    JACurrentViewController * currentController = [[JACurrentViewController alloc] init];
+    currentController.title = @"Now Playing";
+    UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:currentController];
+    [firstNav.navigationBar setBarTintColor:[UIColor blackColor]];
+    [firstNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    bool t = [firstNav.tabBarItem initWithTitle:@"Now Playing" image:[UIImage imageNamed:@"Now-Playing"] tag:1];
+    
+    //Power Hour View Controller setup
+    
+    JAPowerListViewController * powerController = [[JAPowerListViewController alloc] init];
+    powerController.title = @"Power Hours";
+    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:powerController];
+    t = [secondNav.tabBarItem initWithTitle:@"Power Hours" image:[UIImage imageNamed:@"power"] tag:2];
+    [secondNav.navigationBar setBarTintColor:[UIColor blackColor]];
+    [secondNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    
+    //Power Hour Creator View Controller setup
+    
+    JACreatorViewController *creatorController = [[JACreatorViewController alloc] init];
+    creatorController.title = @"Creator";
+    UINavigationController *thirdNav = [[UINavigationController alloc] initWithRootViewController:creatorController];
+    t = [thirdNav.tabBarItem initWithTitle:@"Creator" image:[UIImage imageNamed:@"Create"] tag:3];
+    [thirdNav.navigationBar setBarTintColor:[UIColor blackColor]];
+    [thirdNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    
+    //Adding vcs to tab bar controller
+    
+    NSArray* controllers = [NSArray arrayWithObjects:firstNav, secondNav, thirdNav, nil];
+    tabBarController.viewControllers = controllers;
+    
+    [self.window addSubview:tabBarController.view];
+    
+    self.window.rootViewController = tabBarController;
 
     [self.window makeKeyAndVisible];
     return YES;
