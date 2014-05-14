@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1705B8831922F42100E121D0 /* JARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1705B8821922F42100E121D0 /* JARootViewController.m */; };
+		1705B8861922F66500E121D0 /* JAFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1705B8851922F66500E121D0 /* JAFirstViewController.m */; };
+		1705B8891922F67D00E121D0 /* JASecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1705B8881922F67D00E121D0 /* JASecondViewController.m */; };
 		2E223A121922EB22001051FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A111922EB22001051FA /* Foundation.framework */; };
 		2E223A141922EB22001051FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A131922EB22001051FA /* CoreGraphics.framework */; };
 		2E223A161922EB22001051FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A151922EB22001051FA /* UIKit.framework */; };
@@ -38,6 +40,10 @@
 /* Begin PBXFileReference section */
 		1705B8811922F42100E121D0 /* JARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARootViewController.h; sourceTree = "<group>"; };
 		1705B8821922F42100E121D0 /* JARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARootViewController.m; sourceTree = "<group>"; };
+		1705B8841922F66500E121D0 /* JAFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAFirstViewController.h; sourceTree = "<group>"; };
+		1705B8851922F66500E121D0 /* JAFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAFirstViewController.m; sourceTree = "<group>"; };
+		1705B8871922F67D00E121D0 /* JASecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASecondViewController.h; sourceTree = "<group>"; };
+		1705B8881922F67D00E121D0 /* JASecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASecondViewController.m; sourceTree = "<group>"; };
 		2E223A0E1922EB22001051FA /* Music Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E223A111922EB22001051FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E223A131922EB22001051FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,6 +128,10 @@
 				2E223A231922EB22001051FA /* JAAppDelegate.m */,
 				1705B8811922F42100E121D0 /* JARootViewController.h */,
 				1705B8821922F42100E121D0 /* JARootViewController.m */,
+				1705B8841922F66500E121D0 /* JAFirstViewController.h */,
+				1705B8851922F66500E121D0 /* JAFirstViewController.m */,
+				1705B8871922F67D00E121D0 /* JASecondViewController.h */,
+				1705B8881922F67D00E121D0 /* JASecondViewController.m */,
 				2E223A281922EB22001051FA /* Images.xcassets */,
 				2E223A251922EB22001051FA /* Music_Queue.xcdatamodeld */,
 				2E223A1A1922EB22001051FA /* Supporting Files */,
@@ -255,7 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E223A201922EB22001051FA /* main.m in Sources */,
+				1705B8891922F67D00E121D0 /* JASecondViewController.m in Sources */,
 				2E223A271922EB22001051FA /* Music_Queue.xcdatamodeld in Sources */,
+				1705B8861922F66500E121D0 /* JAFirstViewController.m in Sources */,
 				2E223A241922EB22001051FA /* JAAppDelegate.m in Sources */,
 				1705B8831922F42100E121D0 /* JARootViewController.m in Sources */,
 			);

@@ -1,18 +1,18 @@
 //
-//  JARootViewController.m
+//  JASecondViewController.m
 //  Music Queue
 //
 //  Created by X on 5/13/14.
 //  Copyright (c) 2014 John Arendt. All rights reserved.
 //
 
-#import "JARootViewController.h"
+#import "JASecondViewController.h"
 
-@interface JARootViewController ()
+@interface JASecondViewController ()
 
 @end
 
-@implementation JARootViewController
+@implementation JASecondViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UITabBarItem *firstItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:0];
+
+    [self.tabBarController setTabBarItem:firstItem];
     // Do any additional setup after loading the view.
 }
 

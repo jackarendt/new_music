@@ -1,18 +1,18 @@
 //
-//  JARootViewController.m
+//  JAFirstViewController.m
 //  Music Queue
 //
 //  Created by X on 5/13/14.
 //  Copyright (c) 2014 John Arendt. All rights reserved.
 //
 
-#import "JARootViewController.h"
+#import "JAFirstViewController.h"
 
-@interface JARootViewController ()
+@interface JAFirstViewController ()
 
 @end
 
-@implementation JARootViewController
+@implementation JAFirstViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
 }
 

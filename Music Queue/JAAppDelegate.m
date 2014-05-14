@@ -20,10 +20,24 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[JARootViewController alloc] init]];
+    tabBarController = [[UITabBarController alloc] init];
+    tabBarController.delegate=self;
     
-    self.window.rootViewController = navigationController;
+    // Adding Search,Nearby,Map,AboutUs,Favorites Tabs to tabBarController
+    JAFirstViewController * firstController = [[JAFirstViewController alloc] init];
+    firstController.title = @"view 1";
+    UINavigationController *firtNav = [[UINavigationController alloc]     initWithRootViewController:firstController];
     
+    JASecondViewController* secondController = [[JASecondViewController alloc] init];
+    secondController.title = @"view 2";
+    UINavigationController *secondNav = [[UINavigationController alloc] initWithRootViewController:secondController];
+    
+    NSArray* controllers = [NSArray arrayWithObjects:firtNav, secondNav, nil];
+    tabBarController.viewControllers = controllers;
+    
+    [self.window addSubview:tabBarController.view];
+    
+    self.window.rootViewController = tabBarController;
 
     [self.window makeKeyAndVisible];
     return YES;
