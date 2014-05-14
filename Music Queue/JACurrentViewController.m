@@ -226,4 +226,9 @@
     return cell;
 }
 
+-(void)editPowerHour
+{
+    
+}
+
 @end
