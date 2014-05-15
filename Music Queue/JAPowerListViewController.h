@@ -10,4 +10,6 @@
 
 @interface JAPowerListViewController : UIViewController
 
+@property (nonatomic, retain) UITableView *tableView;
+
 @end

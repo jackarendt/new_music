@@ -1,20 +1,18 @@
 //
-//  JAPowerListViewController.m
+//  JADetailPowerViewController.m
 //  Music Queue
 //
-//  Created by Jack Arendt on 5/13/14.
+//  Created by Jack Arendt on 5/15/14.
 //  Copyright (c) 2014 John Arendt. All rights reserved.
 //
 
-#import "JAPowerListViewController.h"
+#import "JADetailPowerViewController.h"
 
-@interface JAPowerListViewController ()
+@interface JADetailPowerViewController ()
 
 @end
 
-
-@implementation JAPowerListViewController
-@synthesize tableView = _tableView;
+@implementation JADetailPowerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,27 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.tabBarController.tabBar setHidden:NO];
-    self.navigationItem.backBarButtonItem.title = @" ";
-    
     // Do any additional setup after loading the view.
-}
-
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
--(void)initViewiPhone:(NSInteger)height
-{
-    
-}
-
--(void)initViewiPad:(NSInteger)height
-{
-    
 }
 
 - (void)didReceiveMemoryWarning

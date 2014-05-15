@@ -107,7 +107,6 @@
     self.cover.imageView.image = [UIImage imageNamed:@"demoCover.jpg"];
 
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
-    //albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
     album = [[UILabel alloc] init];
     totalTime = [[UILabel alloc] init];
     title = [[UILabel alloc] init];
@@ -120,10 +119,6 @@
     [image.image applyDarkEffect];
     self.tableView.backgroundView = image;
     self.tableView.bounces = NO;
-    
-    //Setting up album cover
-    //albumCover.layer.masksToBounds = YES;
-    //albumCover.layer.cornerRadius = 50;
     
     
     //Set up frames for UI elements
@@ -172,9 +167,11 @@
 {
     //Allocations
     self.currentSongView = [[UIView alloc] init];
+    self.cover = [[JAAlbumView alloc] init];
+    albumView = [[UIView alloc] init];
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
     self.tableView = [[UITableView alloc] init];
-    albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
+    self.cover.imageView.image = [UIImage imageNamed:@"demoCover.jpg"];
     totalTime = [[UILabel alloc] init];
     title = [[UILabel alloc] init];
     iPadArtistAlbumLabel = [[UILabel alloc] init];
@@ -185,7 +182,10 @@
     //Setup tableView
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = [UIColor darkGrayColor];
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
+    [image.image applyDarkEffect];
+    self.tableView.backgroundView = image;
+    self.tableView.bounces = NO;
     
     //Set up Text Attributes
     title.textColor = [UIColor whiteColor];
@@ -206,6 +206,7 @@
     title.text = @"Homecoming";
     iPadArtistAlbumLabel.text = @"Kanye West - Graduation";
     
+    albumView = self.cover;
     
     //Add to subviews
     [self.currentSongView addSubview:background];
@@ -213,6 +214,7 @@
     [self.currentSongView addSubview:totalTime];
     [self.currentSongView addSubview:title];
     [self.currentSongView addSubview:iPadArtistAlbumLabel];
+    [self.currentSongView addSubview:albumView];
     
     [self.view addSubview:self.currentSongView];
     [self.view addSubview:self.tableView];
@@ -250,13 +252,11 @@
         self.currentSongView.frame = CGRectMake(0, 64, IPAD_VERTICAL, 300);
         background.frame = CGRectMake(0, 0, IPAD_VERTICAL, 300);
         self.tableView.frame = CGRectMake(0, 364, IPAD_VERTICAL, 348);
-        albumCover.frame = CGRectMake(50, 50, 200, 200);
-        albumView.frame = CGRectMake(50, 50, 200, 200);
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 100;
         totalTime.frame = CGRectMake(0, 80, IPAD_VERTICAL, 50);
         title.frame = CGRectMake(0, 150, IPAD_VERTICAL, 30);
         iPadArtistAlbumLabel.frame = CGRectMake(0, 180, IPAD_VERTICAL, 30);
+        
+        [self.cover changeLayout:IPAD_HORIZONTAL];
         
     }
     else if(height == IPAD_VERTICAL)
@@ -264,28 +264,23 @@
         self.currentSongView.frame = CGRectMake(0, 64, IPAD_HORIZONTAL, 400);
         background.frame = CGRectMake(0, 0, IPAD_HORIZONTAL, 400);
         self.tableView.frame = CGRectMake(0, 464, IPAD_HORIZONTAL, 504);
-        albumCover.frame = CGRectMake(284, 25, 200, 200);
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 100;
         totalTime.frame = CGRectMake(0, 240, IPAD_HORIZONTAL, 50);
         title.frame = CGRectMake(0, 320, IPAD_HORIZONTAL, 30);
         iPadArtistAlbumLabel.frame = CGRectMake(0, 350, IPAD_HORIZONTAL, 30);
+        
+        [self.cover changeLayout:IPAD_VERTICAL];
     }
     else if(height == IPHONE_5_HEIGHT)
     {
         self.currentSongView.frame = CGRectMake(0, 64, IPHONE_WIDTH, 200);
         self.tableView.frame = CGRectMake(0, 264, 320, 256);
         background.frame = CGRectMake(0, 0, IPHONE_WIDTH, 200);
-        albumCover.frame = CGRectMake(15, 75, 100, 100);
         totalTime.frame = CGRectMake(0, 10, IPHONE_WIDTH, 50);
         title.frame = CGRectMake(130, 80, 190, 30);
         artist.frame = CGRectMake(130, 110, 190, 30);
         album.frame = CGRectMake(130, 140, 190, 30);
         
         [self.cover changeLayout:IPHONE_5_HEIGHT];
-        
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 50;
         
         [self.navigationController setNavigationBarHidden:NO];
         [self.tabBarController.tabBar setHidden:NO];
@@ -297,14 +292,12 @@
         self.currentSongView.frame = CGRectMake(0, 64, IPHONE_WIDTH, 150);
         self.tableView.frame = CGRectMake(0, 264, IPHONE_WIDTH, 188);
         background.frame = CGRectMake(0, 0, IPHONE_WIDTH, 200);
-        albumCover.frame = CGRectMake(15, 75, 100, 100);
         totalTime.frame = CGRectMake(0, 10, IPHONE_WIDTH, 50);
         title.frame = CGRectMake(130, 80, 190, 30);
         artist.frame = CGRectMake(130, 110, 190, 30);
         album.frame = CGRectMake(130, 140, 190, 30);
         
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 50;
+        [self.cover changeLayout:IPHONE_4_HEIGHT];
         
         [self.navigationController setNavigationBarHidden:NO];
         [self.tabBarController.tabBar setHidden:NO];
@@ -319,7 +312,6 @@
         
         self.currentSongView.frame = CGRectMake(0, 0, IPHONE_5_HEIGHT, IPHONE_WIDTH);
         background.frame = CGRectMake(0, 0, IPHONE_5_HEIGHT, IPHONE_WIDTH);
-        albumCover.frame = CGRectMake(15, 60, 200, 200);
         
         [self.cover changeLayout:IPHONE_5_HEIGHT+IPHONE_WIDTH];
         
@@ -327,8 +319,6 @@
         title.frame = CGRectMake(IPHONE_5_HEIGHT/2, 120, IPHONE_5_HEIGHT/2, 30);
         artist.frame = CGRectMake(IPHONE_5_HEIGHT/2, 150, IPHONE_5_HEIGHT/2, 30);
         album.frame = CGRectMake(IPHONE_5_HEIGHT/2, 180, IPHONE_5_HEIGHT/2, 30);
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 100;
     }
     else if(height == IPHONE_WIDTH && !self.is5)
     {
@@ -338,17 +328,12 @@
         
         self.currentSongView.frame = CGRectMake(0, 0, IPHONE_4_HEIGHT, IPHONE_WIDTH);
         background.frame = CGRectMake(0, 0, IPHONE_4_HEIGHT, IPHONE_WIDTH);
-        albumCover.frame = CGRectMake(15, 60, 200, 200);
         totalTime.frame = CGRectMake(180, 25, 232, 50);
         title.frame = CGRectMake(IPHONE_4_HEIGHT/2, 120, 232, 30);
         artist.frame = CGRectMake(IPHONE_4_HEIGHT/2, 150, 232, 30);
         album.frame = CGRectMake(IPHONE_4_HEIGHT/2, 180, 232, 30);
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 100;
         
-        
-        albumCover.layer.masksToBounds = YES;
-        albumCover.layer.cornerRadius = 100;
+        [self.cover changeLayout:IPHONE_4_HEIGHT+IPHONE_WIDTH];
     }
 
 }
@@ -387,9 +372,24 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView setEditing:YES animated:YES];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 -(void)editPowerHour
 {
-    NSLog(@"HEY");
+    
 }
 
 -(void)setNewProgress

@@ -35,6 +35,7 @@
 		2EAAD968192438E1004CC170 /* PWProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAAD967192438E1004CC170 /* PWProgressView.m */; };
 		2EAAD96B19243936004CC170 /* JAAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAAD96A19243936004CC170 /* JAAlbumView.m */; };
 		2EAAD96E19253703004CC170 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAAD96D19253703004CC170 /* UIImage+ImageEffects.m */; };
+		2EAAD97119254AC8004CC170 /* JADetailPowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAAD97019254AC8004CC170 /* JADetailPowerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		2EAAD96A19243936004CC170 /* JAAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAAlbumView.m; sourceTree = "<group>"; };
 		2EAAD96C19253703004CC170 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		2EAAD96D19253703004CC170 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		2EAAD96F19254AC8004CC170 /* JADetailPowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JADetailPowerViewController.h; sourceTree = "<group>"; };
+		2EAAD97019254AC8004CC170 /* JADetailPowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JADetailPowerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				2E443931192314A900E2B930 /* JACreatorViewController.m */,
 				2E44392D1923140900E2B930 /* JAPowerListViewController.h */,
 				2E44392E1923140900E2B930 /* JAPowerListViewController.m */,
+				2EAAD96F19254AC8004CC170 /* JADetailPowerViewController.h */,
+				2EAAD97019254AC8004CC170 /* JADetailPowerViewController.m */,
 				2E44392A192312E900E2B930 /* JACurrentViewController.h */,
 				2E44392B192312E900E2B930 /* JACurrentViewController.m */,
 				2EAAD96919243936004CC170 /* JAAlbumView.h */,
@@ -320,6 +325,7 @@
 				2EAAD96E19253703004CC170 /* UIImage+ImageEffects.m in Sources */,
 				2E223A241922EB22001051FA /* JAAppDelegate.m in Sources */,
 				2E44392C192312E900E2B930 /* JACurrentViewController.m in Sources */,
+				2EAAD97119254AC8004CC170 /* JADetailPowerViewController.m in Sources */,
 				1705B8831922F42100E121D0 /* JARootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
