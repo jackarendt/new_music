@@ -7,7 +7,20 @@
 //
 
 #import "JACurrentViewController.h"
+#import "JAAlbumView.h"
+#import "PWProgressView.h"
+#import "UIImage+ImageEffects.h"
 #import <QuartzCore/QuartzCore.h>
+
+#define IPAD_VERTICAL 1024
+#define IPAD_HORIZONTAL 768
+#define IPHONE_5_HEIGHT 568
+#define IPHONE_4_HEIGHT 480
+#define IPHONE_WIDTH 320
+#define RIGHT_LANDSCAPE 4
+#define LEFT_LANDSCAPE 3
+#define PORTRAIT 1
+#define UPSIDE_DOWN 2
 
 @interface JACurrentViewController (){
     UIImageView *background;
@@ -16,7 +29,15 @@
     UILabel *artist;
     UILabel *album;
     UILabel *totalTime;
+    UILabel *iPadArtistAlbumLabel;
+    UIView *albumView;
+    NSTimer *timer;
+    NSInteger progress;
 }
+
+@property (nonatomic) NSInteger isiPhone;
+@property (nonatomic) NSInteger is5;
+@property (nonatomic, strong) JAAlbumView *cover;
 
 @end
 
@@ -35,19 +56,29 @@
 {
     [super viewDidLoad];
     NSInteger height = self.view.bounds.size.height;
-    
+    timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(setNewProgress) userInfo:nil repeats:YES];
+    progress = 0;
     switch (height) {
-        case 480:
-            [self initViewiPhoneFour];
+        case IPHONE_4_HEIGHT:
+            [self initViewiPhone:height];
+            self.isiPhone = 1;
+            self.is5 = 0;
             break;
-        case 568:
-            [self initViewiPhoneFive];
+        case IPHONE_5_HEIGHT:
+            [self initViewiPhone:height];
+            self.isiPhone = 1;
+            self.is5 = 1;
             break;
             
         default:
             [self initViewiPad:height];
+            self.isiPhone = 0;
             break;
+            
     }
+    
+    UIBarButtonItem *button =[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editPowerHour)];
+    self.navigationItem.leftBarButtonItem = button;
     
     // Do any additional setup after loading the view.
 }
@@ -57,8 +88,7 @@
     [super viewWillAppear:animated];
     
     NSInteger height = self.view.bounds.size.height;
-    if(height == 768 || height == 1024)
-        [self rotationHelper:height];
+    [self rotationHelper:height];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,130 +97,258 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)initViewiPhoneFive
+-(void)initViewiPhone:(NSInteger)height
 {
+    //Allocations
+    self.cover = [[JAAlbumView alloc] init];
+    albumView = [[UIView alloc] init];
     self.currentSongView = [[UIView alloc] init];
-    self.currentSongView.frame = CGRectMake(0, 64, 320, 200);
-    
     self.tableView = [[UITableView alloc] init];
-    self.tableView.frame = CGRectMake(0, 264, 320, 256);
-    self.tableView.backgroundColor = [UIColor darkGrayColor];
+    self.cover.imageView.image = [UIImage imageNamed:@"demoCover.jpg"];
+
+    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
+    //albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
+    album = [[UILabel alloc] init];
+    totalTime = [[UILabel alloc] init];
+    title = [[UILabel alloc] init];
+    artist = [[UILabel alloc] init];
     
+    //Setting up TableView
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
+    [image.image applyDarkEffect];
+    self.tableView.backgroundView = image;
+    self.tableView.bounces = NO;
     
-    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
-    background.frame = CGRectMake(0, 0, 320, 200);
+    //Setting up album cover
+    //albumCover.layer.masksToBounds = YES;
+    //albumCover.layer.cornerRadius = 50;
     
-    albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
-    albumCover.frame = CGRectMake(15, 75, 100, 100);
-    albumCover.layer.masksToBounds = YES;
-    albumCover.layer.cornerRadius = 50;
     
-    totalTime = [[UILabel alloc] init];
-    totalTime.frame = CGRectMake(0, 10, 320, 50);
-    totalTime.text = @"60:00";
+    //Set up frames for UI elements
+    [self rotationHelper:height];
+    
+    
+    //Label setup
     totalTime.textColor = [UIColor whiteColor];
     totalTime.textAlignment = NSTextAlignmentCenter;
     totalTime.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:50];
     
-    title = [[UILabel alloc] init];
-    title.frame = CGRectMake(130, 80, 190, 30);
-    title.text = @"Homecoming";
     title.textColor = [UIColor whiteColor];
     title.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
     
-    artist = [[UILabel alloc] init];
-    artist.frame = CGRectMake(130, 110, 190, 30);
-    artist.text = @"Kanye West";
     artist.textColor = [UIColor whiteColor];
     artist.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     
-    album = [[UILabel alloc] init];
-    album.frame = CGRectMake(130, 140, 190, 30);
-    album.text = @"Graduation";
     album.textColor = [UIColor whiteColor];
     album.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     
     
+    //CHANGE THESE
+    totalTime.text = @"60:00";
+    title.text = @"Homecoming";
+    artist.text = @"Kanye West";
+    album.text = @"Graduation";
+    
+    albumView = self.cover;
+    
+    //Adding to subviews
     [self.currentSongView addSubview:background];
     [self.currentSongView addSubview:albumCover];
     [self.currentSongView addSubview:totalTime];
     [self.currentSongView addSubview:title];
     [self.currentSongView addSubview:artist];
     [self.currentSongView addSubview:album];
+    [self.currentSongView addSubview:albumView];
     
     [self.view addSubview:self.currentSongView];
     [self.view addSubview:self.tableView];
     
-}
-
--(void)initViewiPhoneFour
-{
-    self.currentSongView = [[UIView alloc] init];
-    self.currentSongView.frame = CGRectMake(0, 64, 320, 150);
     
-    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
-    background.frame = CGRectMake(0, 0, 320, 200);
-    
-    albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
-    albumCover.frame = CGRectMake(25, 75, 100, 100);
-    albumCover.layer.masksToBounds = YES;
-    albumCover.layer.cornerRadius = 50;
-    
-    [self.currentSongView addSubview:background];
-    [self.currentSongView addSubview:albumCover];
-    [self.view addSubview:self.currentSongView];
-    
-    
-
 }
 
 -(void)initViewiPad:(NSInteger)orientation
 {
+    //Allocations
     self.currentSongView = [[UIView alloc] init];
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
+    self.tableView = [[UITableView alloc] init];
+    albumCover = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"demoCover.jpg"]];
+    totalTime = [[UILabel alloc] init];
+    title = [[UILabel alloc] init];
+    iPadArtistAlbumLabel = [[UILabel alloc] init];
     
-    if(orientation == 768) // horizontal
-    {
-        self.currentSongView.frame = CGRectMake(0, 64, 1024, 300);
-        background.frame = CGRectMake(0, 0, 1024, 300);
-    }
+    //Setup Frame
+    [self rotationHelper:orientation];
     
-    else // vertical
-    {
-        self.currentSongView.frame = CGRectMake(0, 64, 768, 400);
-        background.frame = CGRectMake(0, 0, 768, 400);
-    }
+    //Setup tableView
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor darkGrayColor];
     
+    //Set up Text Attributes
+    title.textColor = [UIColor whiteColor];
+    title.textAlignment = NSTextAlignmentCenter;
+    title.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+    
+    iPadArtistAlbumLabel.textColor = [UIColor whiteColor];
+    iPadArtistAlbumLabel.textAlignment = NSTextAlignmentCenter;
+    iPadArtistAlbumLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    
+    totalTime.textColor = [UIColor whiteColor];
+    totalTime.textAlignment = NSTextAlignmentCenter;
+    totalTime.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:50];
+    
+    
+    //Change These
+    totalTime.text = @"60:00";
+    title.text = @"Homecoming";
+    iPadArtistAlbumLabel.text = @"Kanye West - Graduation";
+    
+    
+    //Add to subviews
     [self.currentSongView addSubview:background];
+    [self.currentSongView addSubview:albumCover];
+    [self.currentSongView addSubview:totalTime];
+    [self.currentSongView addSubview:title];
+    [self.currentSongView addSubview:iPadArtistAlbumLabel];
+    
     [self.view addSubview:self.currentSongView];
+    [self.view addSubview:self.tableView];
+    
 
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    if(toInterfaceOrientation == 3 || toInterfaceOrientation == 4)
+    //Horizontal orientation
+    if(toInterfaceOrientation == LEFT_LANDSCAPE || toInterfaceOrientation == RIGHT_LANDSCAPE)
     {
-        [self rotationHelper:768];
+        if(self.isiPhone)
+            [self rotationHelper:IPHONE_WIDTH];
+        else
+            [self rotationHelper:IPAD_HORIZONTAL];
     }
-    else
+    
+    //Vertical orientation
+    else if(toInterfaceOrientation == PORTRAIT || toInterfaceOrientation == UPSIDE_DOWN)
     {
-        [self rotationHelper:1024];
+        if(self.isiPhone && self.is5)
+            [self rotationHelper:IPHONE_5_HEIGHT];
+        else if(self.isiPhone && !self.is5)
+            [self rotationHelper:IPHONE_4_HEIGHT];
+        else
+            [self rotationHelper:IPAD_VERTICAL];
     }
 }
 
 -(void)rotationHelper:(NSInteger)height
 {
-    if(height == 768)
+    if(height == IPAD_HORIZONTAL)
     {
-        self.currentSongView.frame = CGRectMake(0, 64, 1024, 300);
-        background.frame = CGRectMake(0, 0, 1024, 300);
+        self.currentSongView.frame = CGRectMake(0, 64, IPAD_VERTICAL, 300);
+        background.frame = CGRectMake(0, 0, IPAD_VERTICAL, 300);
+        self.tableView.frame = CGRectMake(0, 364, IPAD_VERTICAL, 348);
+        albumCover.frame = CGRectMake(50, 50, 200, 200);
+        albumView.frame = CGRectMake(50, 50, 200, 200);
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 100;
+        totalTime.frame = CGRectMake(0, 80, IPAD_VERTICAL, 50);
+        title.frame = CGRectMake(0, 150, IPAD_VERTICAL, 30);
+        iPadArtistAlbumLabel.frame = CGRectMake(0, 180, IPAD_VERTICAL, 30);
+        
     }
-    else
+    else if(height == IPAD_VERTICAL)
     {
-        self.currentSongView.frame = CGRectMake(0, 64, 768, 400);
-        background.frame = CGRectMake(0, 0, 768, 400);
+        self.currentSongView.frame = CGRectMake(0, 64, IPAD_HORIZONTAL, 400);
+        background.frame = CGRectMake(0, 0, IPAD_HORIZONTAL, 400);
+        self.tableView.frame = CGRectMake(0, 464, IPAD_HORIZONTAL, 504);
+        albumCover.frame = CGRectMake(284, 25, 200, 200);
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 100;
+        totalTime.frame = CGRectMake(0, 240, IPAD_HORIZONTAL, 50);
+        title.frame = CGRectMake(0, 320, IPAD_HORIZONTAL, 30);
+        iPadArtistAlbumLabel.frame = CGRectMake(0, 350, IPAD_HORIZONTAL, 30);
+    }
+    else if(height == IPHONE_5_HEIGHT)
+    {
+        self.currentSongView.frame = CGRectMake(0, 64, IPHONE_WIDTH, 200);
+        self.tableView.frame = CGRectMake(0, 264, 320, 256);
+        background.frame = CGRectMake(0, 0, IPHONE_WIDTH, 200);
+        albumCover.frame = CGRectMake(15, 75, 100, 100);
+        totalTime.frame = CGRectMake(0, 10, IPHONE_WIDTH, 50);
+        title.frame = CGRectMake(130, 80, 190, 30);
+        artist.frame = CGRectMake(130, 110, 190, 30);
+        album.frame = CGRectMake(130, 140, 190, 30);
+        
+        [self.cover changeLayout:IPHONE_5_HEIGHT];
+        
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 50;
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.tabBarController.tabBar setHidden:NO];
+        [self.tableView setHidden:NO];
+
+    }
+    else if(height == IPHONE_4_HEIGHT)
+    {
+        self.currentSongView.frame = CGRectMake(0, 64, IPHONE_WIDTH, 150);
+        self.tableView.frame = CGRectMake(0, 264, IPHONE_WIDTH, 188);
+        background.frame = CGRectMake(0, 0, IPHONE_WIDTH, 200);
+        albumCover.frame = CGRectMake(15, 75, 100, 100);
+        totalTime.frame = CGRectMake(0, 10, IPHONE_WIDTH, 50);
+        title.frame = CGRectMake(130, 80, 190, 30);
+        artist.frame = CGRectMake(130, 110, 190, 30);
+        album.frame = CGRectMake(130, 140, 190, 30);
+        
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 50;
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.tabBarController.tabBar setHidden:NO];
+        [self.tableView setHidden:NO];
+    }
+    
+    else if(height == IPHONE_WIDTH && self.is5)
+    {
+        [self.tableView setHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.tabBarController.tabBar setHidden:YES];
+        
+        self.currentSongView.frame = CGRectMake(0, 0, IPHONE_5_HEIGHT, IPHONE_WIDTH);
+        background.frame = CGRectMake(0, 0, IPHONE_5_HEIGHT, IPHONE_WIDTH);
+        albumCover.frame = CGRectMake(15, 60, 200, 200);
+        
+        [self.cover changeLayout:IPHONE_5_HEIGHT+IPHONE_WIDTH];
+        
+        totalTime.frame = CGRectMake(200, 25, IPHONE_5_HEIGHT/2, 50);
+        title.frame = CGRectMake(IPHONE_5_HEIGHT/2, 120, IPHONE_5_HEIGHT/2, 30);
+        artist.frame = CGRectMake(IPHONE_5_HEIGHT/2, 150, IPHONE_5_HEIGHT/2, 30);
+        album.frame = CGRectMake(IPHONE_5_HEIGHT/2, 180, IPHONE_5_HEIGHT/2, 30);
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 100;
+    }
+    else if(height == IPHONE_WIDTH && !self.is5)
+    {
+        [self.tableView setHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.tabBarController.tabBar setHidden:YES];
+        
+        self.currentSongView.frame = CGRectMake(0, 0, IPHONE_4_HEIGHT, IPHONE_WIDTH);
+        background.frame = CGRectMake(0, 0, IPHONE_4_HEIGHT, IPHONE_WIDTH);
+        albumCover.frame = CGRectMake(15, 60, 200, 200);
+        totalTime.frame = CGRectMake(180, 25, 232, 50);
+        title.frame = CGRectMake(IPHONE_4_HEIGHT/2, 120, 232, 30);
+        artist.frame = CGRectMake(IPHONE_4_HEIGHT/2, 150, 232, 30);
+        album.frame = CGRectMake(IPHONE_4_HEIGHT/2, 180, 232, 30);
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 100;
+        
+        
+        albumCover.layer.masksToBounds = YES;
+        albumCover.layer.cornerRadius = 100;
     }
 
 }
@@ -202,22 +360,25 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //To be changed
     return 60;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"newFriendCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    //Change this please
     cell.textLabel.text = @"Homecoming";
     cell.detailTextLabel.text = @"Kanye West - Graudation";
     cell.imageView.image = [UIImage imageNamed:@"demoCover.jpg"];
-    cell.backgroundColor = [UIColor darkGrayColor];
+    
+    cell.backgroundColor = [UIColor colorWithRed:.3 green:.3 blue:.3 alpha:.5];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.imageView.layer.masksToBounds = YES;
@@ -228,7 +389,17 @@
 
 -(void)editPowerHour
 {
+    NSLog(@"HEY");
+}
+
+-(void)setNewProgress
+{
+    progress++;
+    if(progress >= 300)
+        progress = 0;
     
+    float prog = (float)progress/(300);
+    [self.cover.progressView setProgress:prog];
 }
 
 @end

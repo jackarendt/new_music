@@ -36,6 +36,7 @@
     UINavigationController *firstNav = [[UINavigationController alloc] initWithRootViewController:currentController];
     [firstNav.navigationBar setBarTintColor:[UIColor blackColor]];
     [firstNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    firstNav.navigationBar.tintColor = [UIColor whiteColor];
     bool t = [firstNav.tabBarItem initWithTitle:@"Now Playing" image:[UIImage imageNamed:@"Now-Playing"] tag:1];
     
     //Power Hour View Controller setup
