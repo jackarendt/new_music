@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JAMusicLibraryViewController : UINavigationController
+@interface JAMusicLibraryViewController : UIViewController
 
 @end

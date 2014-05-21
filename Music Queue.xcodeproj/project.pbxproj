@@ -24,7 +24,7 @@
 		2E223A3B1922EB22001051FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E223A391922EB22001051FA /* InfoPlist.strings */; };
 		2E223A3D1922EB22001051FA /* Music_QueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E223A3C1922EB22001051FA /* Music_QueueTests.m */; };
 		2E229AA2192D4120001F7EF5 /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E229AA1192D4120001F7EF5 /* save@2x.png */; };
-		2E229AA5192D49AB001F7EF5 /* JAMusicLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AA4192D49AB001F7EF5 /* JAMusicLibraryViewController.m */; };
+		2E229AAB192D4C08001F7EF5 /* JAMusicLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AAA192D4C08001F7EF5 /* JAMusicLibraryViewController.m */; };
 		2E346A84192BFC550040E928 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A83192BFC550040E928 /* AVFoundation.framework */; };
 		2E346A87192BFC690040E928 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A85192BFC690040E928 /* CoreMedia.framework */; };
 		2E346A88192BFC690040E928 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A86192BFC690040E928 /* MediaPlayer.framework */; };
@@ -76,8 +76,8 @@
 		2E223A3A1922EB22001051FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E223A3C1922EB22001051FA /* Music_QueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Music_QueueTests.m; sourceTree = "<group>"; };
 		2E229AA1192D4120001F7EF5 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
-		2E229AA3192D49AB001F7EF5 /* JAMusicLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAMusicLibraryViewController.h; sourceTree = "<group>"; };
-		2E229AA4192D49AB001F7EF5 /* JAMusicLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAMusicLibraryViewController.m; sourceTree = "<group>"; };
+		2E229AA9192D4C08001F7EF5 /* JAMusicLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JAMusicLibraryViewController.h; path = ../JAMusicLibraryViewController.h; sourceTree = "<group>"; };
+		2E229AAA192D4C08001F7EF5 /* JAMusicLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JAMusicLibraryViewController.m; path = ../JAMusicLibraryViewController.m; sourceTree = "<group>"; };
 		2E346A83192BFC550040E928 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2E346A85192BFC690040E928 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2E346A86192BFC690040E928 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -181,10 +181,10 @@
 			children = (
 				2E223A221922EB22001051FA /* JAAppDelegate.h */,
 				2E223A231922EB22001051FA /* JAAppDelegate.m */,
+				2E229AA9192D4C08001F7EF5 /* JAMusicLibraryViewController.h */,
+				2E229AAA192D4C08001F7EF5 /* JAMusicLibraryViewController.m */,
 				2E443930192314A900E2B930 /* JACreatorViewController.h */,
 				2E443931192314A900E2B930 /* JACreatorViewController.m */,
-				2E229AA3192D49AB001F7EF5 /* JAMusicLibraryViewController.h */,
-				2E229AA4192D49AB001F7EF5 /* JAMusicLibraryViewController.m */,
 				2E44392D1923140900E2B930 /* JAPowerListViewController.h */,
 				2E44392E1923140900E2B930 /* JAPowerListViewController.m */,
 				2EAAD96F19254AC8004CC170 /* JADetailPowerViewController.h */,
@@ -346,7 +346,7 @@
 				2E44392F1923140900E2B930 /* JAPowerListViewController.m in Sources */,
 				2EAAD968192438E1004CC170 /* PWProgressView.m in Sources */,
 				2E443932192314A900E2B930 /* JACreatorViewController.m in Sources */,
-				2E229AA5192D49AB001F7EF5 /* JAMusicLibraryViewController.m in Sources */,
+				2E229AAB192D4C08001F7EF5 /* JAMusicLibraryViewController.m in Sources */,
 				2E223A271922EB22001051FA /* Music_Queue.xcdatamodeld in Sources */,
 				2EAAD96E19253703004CC170 /* UIImage+ImageEffects.m in Sources */,
 				2E223A241922EB22001051FA /* JAAppDelegate.m in Sources */,

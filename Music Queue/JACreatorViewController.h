@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JAMusicLibraryViewController.h"
 
 @interface JACreatorViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 

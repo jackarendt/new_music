@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Library";
     // Do any additional setup after loading the view.
 }
 

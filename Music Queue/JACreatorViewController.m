@@ -36,6 +36,7 @@
     UIBarButtonItem *addButton;
     UIBarButtonItem *saveButton;
     BOOL inProgress;
+    JAMusicLibraryViewController *musicVC;
 }
 
 @property (nonatomic) NSInteger isiPhone;
@@ -58,12 +59,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [super viewDidLoad];
+    musicVC = [[JAMusicLibraryViewController alloc] init];
     [self.navigationController setNavigationBarHidden:NO];
     [self.tabBarController.tabBar setHidden:NO];
     self.navigationItem.backBarButtonItem.title = @" ";
-    self.navigationController.
     self.view.backgroundColor = [UIColor darkGrayColor];
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
     [background.image applyDarkEffect];
@@ -355,7 +354,12 @@
 
 -(void)addSong
 {
-    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:musicVC];
+//    nav.navigationBar.tintColor = [UIColor blackColor];
+//    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+//    nav.navigationBar.tintColor = [UIColor whiteColor];
+
+    [self.navigationController pushViewController:musicVC animated:NO];
 }
 
 -(void)savePowerHour
@@ -409,15 +413,14 @@
     return 0;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    musicVC = segue.destinationViewController;
 }
-*/
+
 
 @end
