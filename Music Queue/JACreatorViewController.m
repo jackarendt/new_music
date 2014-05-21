@@ -32,6 +32,10 @@
     NSInteger numSongs;
     BOOL started;
     BOOL finished;
+    UIBarButtonItem *editButton;
+    UIBarButtonItem *addButton;
+    UIBarButtonItem *saveButton;
+    BOOL inProgress;
 }
 
 @property (nonatomic) NSInteger isiPhone;
@@ -59,9 +63,16 @@
     [self.navigationController setNavigationBarHidden:NO];
     [self.tabBarController.tabBar setHidden:NO];
     self.navigationItem.backBarButtonItem.title = @" ";
+    self.navigationController.
     self.view.backgroundColor = [UIColor darkGrayColor];
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
     [background.image applyDarkEffect];
+    
+    editButton =[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editPowerHour)];
+    
+    addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSong)];
+    saveButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save.png"] landscapeImagePhone:[UIImage imageNamed:@"save.png"] style:UIBarButtonItemStylePlain target:self action:@selector(savePowerHour)];
+    //self.navigationItem.leftBarButtonItem = button;
     
     NSInteger height = self.view.bounds.size.height;
     
@@ -141,8 +152,12 @@
     [titleLabel setHidden:YES];
     
     numberOfSongs.textColor = [UIColor whiteColor];
-    numberOfSongs.text = @"0";
-    numberOfSongs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+    numberOfSongs.text = @"0 Songs";
+    numberOfSongs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21.0];
+    numberOfSongs.textAlignment = NSTextAlignmentCenter;
+    [numberOfSongs setHidden:YES];
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:.3 green:.3 blue:.3 alpha:.5];
     
     [background.image applyDarkEffect];
     
@@ -194,6 +209,7 @@
         titleTextField.frame = CGRectMake(10, IPHONE_5_HEIGHT/2-25, 300, 50);
         createButton.frame = CGRectMake(60, IPHONE_5_HEIGHT/2 + 40, 200, 44);
         hideKeyboard.frame = CGRectMake(0, 0, IPHONE_WIDTH, IPHONE_5_HEIGHT);
+        self.tableView.frame = CGRectMake(0, IPHONE_5_HEIGHT, IPHONE_WIDTH, 368);
     }
     if(height == IPHONE_4_HEIGHT)
     {
@@ -239,23 +255,38 @@
 
 -(void)hideKey
 {
-    if(self.isiPhone && self.is5)
+    if(!inProgress)
     {
-        [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-            titleTextField.frame = CGRectMake(10, IPHONE_5_HEIGHT/2-25, 300, 50);
-            createButton.frame = CGRectMake(60, IPHONE_5_HEIGHT/2 +40, 200, 44);
+        if(self.isiPhone && self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                titleTextField.frame = CGRectMake(10, IPHONE_5_HEIGHT/2-25, 300, 50);
+                createButton.frame = CGRectMake(60, IPHONE_5_HEIGHT/2 +40, 200, 44);
+            }
+                                      completion:nil];
         }
-                                  completion:nil];
     }
+    else
+        [self saveNewTitle];
 
     [titleTextField resignFirstResponder];
 }
 
 -(void)createPowerHour
 {
+    inProgress = YES;
+    [hideKeyboard setHidden:YES];
     titleLabel.frame = titleTextField.frame;
     titleLabel.text = titleTextField.text;
+    numberOfSongs.frame = CGRectMake(10, 120, 300, 30);
+    numberOfSongs.alpha = 0;
     [titleLabel setHidden:NO];
+    [numberOfSongs setHidden:NO];
+    self.navigationItem.leftBarButtonItem = editButton;
+    
+    NSArray *arr = [[NSArray alloc] initWithObjects:addButton, saveButton, nil];
+    self.navigationItem.rightBarButtonItems = arr;
+    
     
     [UIView animateKeyframesWithDuration:.5 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
         titleTextField.alpha = 0;
@@ -266,6 +297,9 @@
         
         [UIView animateKeyframesWithDuration:.3 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
             titleLabel.frame = CGRectMake(10, 75, 300, 30);
+            self.tableView.frame = CGRectMake(0, IPHONE_5_HEIGHT-368, 320, 368);
+            titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:25.0];
+            numberOfSongs.alpha = 1;
         }completion:nil];
         
                               }];
@@ -275,12 +309,16 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [titleTextField resignFirstResponder];
-    [self createPowerHour];
+    if(!inProgress)
+        [self createPowerHour];
+    else
+        [self saveNewTitle];
     return YES;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    [hideKeyboard setHidden:NO];
     if(self.isiPhone && self.is5)
     {
         [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
@@ -289,8 +327,87 @@
         }
         completion:nil];
     }
+    
+    if(inProgress)
+    {
+        if(self.isiPhone && self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                self.tableView.frame = CGRectMake(0, IPHONE_5_HEIGHT, 320, 368);
+                numberOfSongs.alpha = 0;
+                titleLabel.frame = titleTextField.frame;
+            }
+                                      completion:nil];
+        }
+    }
 }
 
+-(void)editPowerHour
+{
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    self.navigationItem.leftBarButtonItem.title = @"";
+    titleTextField.frame = CGRectMake(titleLabel.frame.origin.x, 65, 300, 50);
+    titleTextField.alpha = 1;
+    titleLabel.alpha = 0;
+    titleTextField.text = titleLabel.text;
+    
+}
+
+-(void)addSong
+{
+    
+}
+
+-(void)savePowerHour
+{
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    self.navigationItem.leftBarButtonItem.title = @"Edit";
+    [self saveNewTitle];
+}
+
+-(void)saveNewTitle
+{
+    titleLabel.text = titleTextField.text;
+    titleLabel.alpha = 1;
+    titleTextField.alpha = 0;
+    [titleTextField resignFirstResponder];
+    
+    if(self.isiPhone && self.is5)
+    {
+        [UIView animateKeyframesWithDuration:.25 delay:.25 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+            self.tableView.frame = CGRectMake(0, 200, 320, 368);
+            numberOfSongs.alpha = 1;
+            titleLabel.frame = CGRectMake(10, 75, 300, 30);
+        }
+                                  completion:nil];
+    }
+
+}
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    //cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = @"YO";
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
 
 /*
 #pragma mark - Navigation

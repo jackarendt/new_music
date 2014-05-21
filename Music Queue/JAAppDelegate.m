@@ -47,6 +47,7 @@
     t = [secondNav.tabBarItem initWithTitle:@"Power Hours" image:[UIImage imageNamed:@"power"] tag:2];
     [secondNav.navigationBar setBarTintColor:[UIColor blackColor]];
     [secondNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    secondNav.navigationBar.tintColor = [UIColor whiteColor];
     
     //Power Hour Creator View Controller setup
     
@@ -56,6 +57,7 @@
     t = [thirdNav.tabBarItem initWithTitle:@"Creator" image:[UIImage imageNamed:@"Create"] tag:3];
     [thirdNav.navigationBar setBarTintColor:[UIColor blackColor]];
     [thirdNav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Light" size:21]}];
+    thirdNav.navigationBar.tintColor = [UIColor whiteColor];
     
     //Adding vcs to tab bar controller
     
