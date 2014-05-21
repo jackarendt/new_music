@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JAMusicLibraryViewController : UIViewController
+@interface JAMusicLibraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
