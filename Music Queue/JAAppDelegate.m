@@ -193,4 +193,17 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        if(tabBarController.selectedIndex == 0)
+            return UIInterfaceOrientationMaskAllButUpsideDown;
+        else
+            return UIInterfaceOrientationMaskPortrait;
+    }
+    else
+        return UIInterfaceOrientationMaskAll;
+}
+
 @end

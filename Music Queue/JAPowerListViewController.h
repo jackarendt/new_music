@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JAPowerListViewController : UIViewController
+@interface JAPowerListViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) UITableView *tableView;
 

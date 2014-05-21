@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JACreatorViewController : UIViewController
+@interface JACreatorViewController : UIViewController <UITextFieldDelegate>
 
 @end

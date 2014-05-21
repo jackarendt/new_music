@@ -23,6 +23,10 @@
 		2E223A331922EB22001051FA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E223A171922EB22001051FA /* CoreData.framework */; };
 		2E223A3B1922EB22001051FA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E223A391922EB22001051FA /* InfoPlist.strings */; };
 		2E223A3D1922EB22001051FA /* Music_QueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E223A3C1922EB22001051FA /* Music_QueueTests.m */; };
+		2E346A84192BFC550040E928 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A83192BFC550040E928 /* AVFoundation.framework */; };
+		2E346A87192BFC690040E928 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A85192BFC690040E928 /* CoreMedia.framework */; };
+		2E346A88192BFC690040E928 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A86192BFC690040E928 /* MediaPlayer.framework */; };
+		2E346A8A192BFC760040E928 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E346A89192BFC760040E928 /* AudioToolbox.framework */; };
 		2E44392C192312E900E2B930 /* JACurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44392B192312E900E2B930 /* JACurrentViewController.m */; };
 		2E44392F1923140900E2B930 /* JAPowerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E44392E1923140900E2B930 /* JAPowerListViewController.m */; };
 		2E443932192314A900E2B930 /* JACreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E443931192314A900E2B930 /* JACreatorViewController.m */; };
@@ -69,6 +73,10 @@
 		2E223A381922EB22001051FA /* Music QueueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music QueueTests-Info.plist"; sourceTree = "<group>"; };
 		2E223A3A1922EB22001051FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E223A3C1922EB22001051FA /* Music_QueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Music_QueueTests.m; sourceTree = "<group>"; };
+		2E346A83192BFC550040E928 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2E346A85192BFC690040E928 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2E346A86192BFC690040E928 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		2E346A89192BFC760040E928 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2E44392A192312E900E2B930 /* JACurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JACurrentViewController.h; sourceTree = "<group>"; };
 		2E44392B192312E900E2B930 /* JACurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JACurrentViewController.m; sourceTree = "<group>"; };
 		2E44392D1923140900E2B930 /* JAPowerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAPowerListViewController.h; sourceTree = "<group>"; };
@@ -96,6 +104,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E346A8A192BFC760040E928 /* AudioToolbox.framework in Frameworks */,
+				2E346A87192BFC690040E928 /* CoreMedia.framework in Frameworks */,
+				2E346A88192BFC690040E928 /* MediaPlayer.framework in Frameworks */,
+				2E346A84192BFC550040E928 /* AVFoundation.framework in Frameworks */,
 				2EAAD96319234B6F004CC170 /* QuartzCore.framework in Frameworks */,
 				2E223A141922EB22001051FA /* CoreGraphics.framework in Frameworks */,
 				2E223A181922EB22001051FA /* CoreData.framework in Frameworks */,
@@ -144,6 +156,10 @@
 		2E223A101922EB22001051FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E346A89192BFC760040E928 /* AudioToolbox.framework */,
+				2E346A85192BFC690040E928 /* CoreMedia.framework */,
+				2E346A86192BFC690040E928 /* MediaPlayer.framework */,
+				2E346A83192BFC550040E928 /* AVFoundation.framework */,
 				2EAAD96219234B6F004CC170 /* QuartzCore.framework */,
 				2E223A111922EB22001051FA /* Foundation.framework */,
 				2E223A131922EB22001051FA /* CoreGraphics.framework */,
