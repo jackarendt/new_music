@@ -25,10 +25,14 @@
 @interface JAMusicLibraryViewController (){
     UIImageView *background;
     NSMutableArray *songsList;
+    NSMutableArray *filteredList;
+    BOOL searchActive;
+    BOOL isSearching;
 }
 
 @property (nonatomic) NSInteger isiPhone;
 @property (nonatomic) NSInteger is5;
+@property (nonatomic, strong) UISearchBar *searchBar;
 
 @end
 
@@ -47,6 +51,13 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Library";
+    
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchForSong)];
+    
+    searchActive = NO;
+    isSearching = NO;
+    
+    self.navigationItem.rightBarButtonItem = searchButton;
 
     NSInteger height = self.view.bounds.size.height;
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
@@ -56,6 +67,7 @@
     songsList = [NSMutableArray arrayWithArray:itemsFromGenericQuery];
     //3
     [self.tableView reloadData];
+
 
     
     if((orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -94,6 +106,15 @@
 {
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"songbackground.jpg"]];
     self.tableView = [[UITableView alloc] init];
+    self.searchBar = [[UISearchBar alloc] init];
+    
+    
+    self.searchBar.translucent = NO;
+    self.searchBar.barStyle = UIBarStyleBlack;
+    self.searchBar.delegate = self;
+    self.searchBar.keyboardType = UIKeyboardAppearanceDark;
+    
+    
     self.tableView.dataSource =self;
     self.tableView.delegate = self;
     
@@ -104,6 +125,7 @@
     
     [self.view addSubview:background];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.searchBar];
 }
 
 -(void)initViewiPad:(NSInteger)height
@@ -122,10 +144,13 @@
     {
         background.frame = CGRectMake(0, 0, IPHONE_WIDTH, IPHONE_5_HEIGHT);
         self.tableView.frame = CGRectMake(0, 64, IPHONE_WIDTH, IPHONE_5_HEIGHT-48);
+        self.searchBar.frame = CGRectMake(0, 24, 320, 40);
     }
     if(height == IPHONE_4_HEIGHT)
     {
         background.frame = CGRectMake(0, 0, IPHONE_WIDTH, IPHONE_4_HEIGHT);
+        self.tableView.frame = CGRectMake(0, 64, IPHONE_WIDTH, IPHONE_4_HEIGHT-48);
+        self.searchBar.frame = CGRectMake(0, 24, 320, 40);
     }
     if(height == IPAD_HORIZONTAL)
     {
@@ -171,6 +196,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(isSearching)
+        return [filteredList count];
     return [songsList count];
 }
 
@@ -183,14 +210,28 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.backgroundColor = [UIColor clearColor];
-    MPMediaItem *song = [songsList objectAtIndex:indexPath.row];
-    NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
-    NSString *artist = [song valueForProperty: MPMediaItemPropertyArtist];
-    NSString *album = [song valueForProperty:MPMediaItemPropertyAlbumTitle];
+    if(!isSearching)
+    {
+        MPMediaItem *song = [songsList objectAtIndex:indexPath.row];
+        NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
+        NSString *artist = [song valueForProperty: MPMediaItemPropertyArtist];
+        NSString *album = [song valueForProperty:MPMediaItemPropertyAlbumTitle];
+        cell.textLabel.text = songTitle;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artist, album];
+    }
+    
+    if(isSearching)
+    {
+        MPMediaItem *song = [filteredList objectAtIndex:indexPath.row];
+        NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
+        NSString *artist = [song valueForProperty: MPMediaItemPropertyArtist];
+        NSString *album = [song valueForProperty:MPMediaItemPropertyAlbumTitle];
+        cell.textLabel.text = songTitle;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artist, album];
+    }
     
     
-    cell.textLabel.text = songTitle;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", artist, album];
+    
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.textColor = [UIColor whiteColor];
     
@@ -200,8 +241,119 @@
 
 -(void)searchForSong
 {
-    
+    if(searchActive)
+    {
+        if(self.isiPhone && self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                self.searchBar.frame = CGRectMake(0, 20, IPHONE_WIDTH, 40);
+                self.tableView.frame = CGRectMake(0, 64, IPHONE_WIDTH, IPHONE_5_HEIGHT-48);
+            }completion:^(BOOL finished){
+                [self.searchBar resignFirstResponder];
+            }];
+        }
+        if(self.isiPhone && !self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                self.searchBar.frame = CGRectMake(0, 20, IPHONE_WIDTH, 40);
+                self.tableView.frame = CGRectMake(0, 64, IPHONE_WIDTH, IPHONE_4_HEIGHT-48);
+            }completion:^(BOOL finished){
+                [self.searchBar resignFirstResponder];
+            }];
+        }
+        searchActive = NO;
+    }
+    else if(!searchActive)
+    {
+        if(self.isiPhone && self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                self.searchBar.frame = CGRectMake(0, 64, IPHONE_WIDTH, 40);
+                self.tableView.frame = CGRectMake(0, 104, IPHONE_WIDTH, IPHONE_5_HEIGHT-154);
+                [self.searchBar becomeFirstResponder];
+                
+            }completion:^(BOOL finished){
+                        }];
+        }
+        if(self.isiPhone && !self.is5)
+        {
+            [UIView animateKeyframesWithDuration:.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+                self.searchBar.frame = CGRectMake(0, 64, IPHONE_WIDTH, 40);
+                self.tableView.frame = CGRectMake(0, 104, IPHONE_WIDTH, IPHONE_4_HEIGHT-154);
+                [self.searchBar becomeFirstResponder];
+                
+            }completion:^(BOOL finished){
+            }];
+
+        }
+        searchActive = YES;
+    }
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    unsigned long index = self.navigationController.viewControllers.count-2;
+    JACreatorViewController *creatorVC = [self.navigationController.viewControllers objectAtIndex:index];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"%@", creatorVC);
+    MPMediaItem *song;
+    if(isSearching)
+        song = [filteredList objectAtIndex:indexPath.row];
+    else
+        song = [songsList objectAtIndex:indexPath.row];
+    creatorVC.song = song;
+    creatorVC.flags = [NSNumber numberWithInt:1];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if(searchText.length == 0)
+    {
+        isSearching = NO;
+        [self.tableView reloadData];
+    }
+    else
+    {
+        isSearching = YES;
+        filteredList = [[NSMutableArray alloc] init];
+        [filteredList removeAllObjects];
+        NSMutableArray *names = [[NSMutableArray alloc] init];
+        
+        for(int i = 0; i< [songsList count]; i++)
+        {
+            MPMediaItem *song = [songsList objectAtIndex:i];
+            [names addObject:[song valueForKey:MPMediaItemPropertyTitle]];
+        }
+        
+        
+        for(MPMediaItem *attribute in songsList)
+        {
+            NSString *title = [attribute valueForKey:MPMediaItemPropertyTitle];
+            NSRange titleRange = [title rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            
+            NSString *artist = [attribute valueForKey:MPMediaItemPropertyArtist];
+            NSRange artistRange = [artist rangeOfString:searchText options:NSCaseInsensitiveSearch];
+
+            NSString *album = [attribute valueForKey:MPMediaItemPropertyAlbumTitle];
+            NSRange albumRange = [album rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            
+            if(titleRange.location != NSNotFound || artistRange.location != NSNotFound || albumRange.location != NSNotFound)
+            {
+                [filteredList addObject:attribute];
+            }
+        }
+        
+        [self.tableView reloadData];
+    }
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
 
 /*
 #pragma mark - Navigation

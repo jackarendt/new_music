@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JACreatorViewController.h"
 
-@interface JAMusicLibraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface JAMusicLibraryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 

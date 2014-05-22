@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E223A0D1922EB22001051FA"
-               BuildableName = "Music Queue.app"
-               BlueprintName = "Music Queue"
-               ReferencedContainer = "container:Music Queue.xcodeproj">
+               BuildableName = "Power Hour.app"
+               BlueprintName = "Power Hour"
+               ReferencedContainer = "container:Power Hour.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E223A2D1922EB22001051FA"
-               BuildableName = "Music QueueTests.xctest"
-               BlueprintName = "Music QueueTests"
-               ReferencedContainer = "container:Music Queue.xcodeproj">
+               BuildableName = "Power HourTests.xctest"
+               BlueprintName = "Power HourTests"
+               ReferencedContainer = "container:Power Hour.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E223A0D1922EB22001051FA"
-            BuildableName = "Music Queue.app"
-            BlueprintName = "Music Queue"
-            ReferencedContainer = "container:Music Queue.xcodeproj">
+            BuildableName = "Power Hour.app"
+            BlueprintName = "Power Hour"
+            ReferencedContainer = "container:Power Hour.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E223A0D1922EB22001051FA"
-            BuildableName = "Music Queue.app"
-            BlueprintName = "Music Queue"
-            ReferencedContainer = "container:Music Queue.xcodeproj">
+            BuildableName = "Power Hour.app"
+            BlueprintName = "Power Hour"
+            ReferencedContainer = "container:Power Hour.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E223A0D1922EB22001051FA"
-            BuildableName = "Music Queue.app"
-            BlueprintName = "Music Queue"
-            ReferencedContainer = "container:Music Queue.xcodeproj">
+            BuildableName = "Power Hour.app"
+            BlueprintName = "Power Hour"
+            ReferencedContainer = "container:Power Hour.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

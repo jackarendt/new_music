@@ -57,22 +57,22 @@
 /* Begin PBXFileReference section */
 		1705B8811922F42100E121D0 /* JARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JARootViewController.h; sourceTree = "<group>"; };
 		1705B8821922F42100E121D0 /* JARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JARootViewController.m; sourceTree = "<group>"; };
-		2E223A0E1922EB22001051FA /* Music Queue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Queue.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E223A0E1922EB22001051FA /* Power Hour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Power Hour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E223A111922EB22001051FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E223A131922EB22001051FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2E223A151922EB22001051FA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2E223A171922EB22001051FA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		2E223A1B1922EB22001051FA /* Music Queue-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music Queue-Info.plist"; sourceTree = "<group>"; };
+		2E223A1B1922EB22001051FA /* Power Hour-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Power Hour-Info.plist"; sourceTree = "<group>"; };
 		2E223A1D1922EB22001051FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E223A1F1922EB22001051FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2E223A211922EB22001051FA /* Music Queue-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Music Queue-Prefix.pch"; sourceTree = "<group>"; };
+		2E223A211922EB22001051FA /* Power Hour-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Power Hour-Prefix.pch"; sourceTree = "<group>"; };
 		2E223A221922EB22001051FA /* JAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JAAppDelegate.h; sourceTree = "<group>"; };
 		2E223A231922EB22001051FA /* JAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JAAppDelegate.m; sourceTree = "<group>"; };
 		2E223A261922EB22001051FA /* Music_Queue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music_Queue.xcdatamodel; sourceTree = "<group>"; };
 		2E223A281922EB22001051FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2E223A2E1922EB22001051FA /* Music QueueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music QueueTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E223A2E1922EB22001051FA /* Power HourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Power HourTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E223A2F1922EB22001051FA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2E223A381922EB22001051FA /* Music QueueTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Music QueueTests-Info.plist"; sourceTree = "<group>"; };
+		2E223A381922EB22001051FA /* Power HourTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Power HourTests-Info.plist"; sourceTree = "<group>"; };
 		2E223A3A1922EB22001051FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E223A3C1922EB22001051FA /* Music_QueueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Music_QueueTests.m; sourceTree = "<group>"; };
 		2E229AA1192D4120001F7EF5 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "save@2x.png"; path = "../save@2x.png"; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 		2E223A0F1922EB22001051FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2E223A0E1922EB22001051FA /* Music Queue.app */,
-				2E223A2E1922EB22001051FA /* Music QueueTests.xctest */,
+				2E223A0E1922EB22001051FA /* Power Hour.app */,
+				2E223A2E1922EB22001051FA /* Power HourTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,10 +210,10 @@
 				2E44393919232C8B00E2B930 /* power@2x.png */,
 				2E44393719232A5000E2B930 /* Create@2x.png */,
 				2E4439331923266500E2B930 /* Now-Playing@2x.png */,
-				2E223A1B1922EB22001051FA /* Music Queue-Info.plist */,
+				2E223A1B1922EB22001051FA /* Power Hour-Info.plist */,
 				2E223A1C1922EB22001051FA /* InfoPlist.strings */,
 				2E223A1F1922EB22001051FA /* main.m */,
-				2E223A211922EB22001051FA /* Music Queue-Prefix.pch */,
+				2E223A211922EB22001051FA /* Power Hour-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,7 +230,7 @@
 		2E223A371922EB22001051FA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2E223A381922EB22001051FA /* Music QueueTests-Info.plist */,
+				2E223A381922EB22001051FA /* Power HourTests-Info.plist */,
 				2E223A391922EB22001051FA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -239,9 +239,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2E223A0D1922EB22001051FA /* Music Queue */ = {
+		2E223A0D1922EB22001051FA /* Power Hour */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E223A401922EB22001051FA /* Build configuration list for PBXNativeTarget "Music Queue" */;
+			buildConfigurationList = 2E223A401922EB22001051FA /* Build configuration list for PBXNativeTarget "Power Hour" */;
 			buildPhases = (
 				2E223A0A1922EB22001051FA /* Sources */,
 				2E223A0B1922EB22001051FA /* Frameworks */,
@@ -251,14 +251,14 @@
 			);
 			dependencies = (
 			);
-			name = "Music Queue";
+			name = "Power Hour";
 			productName = "Music Queue";
-			productReference = 2E223A0E1922EB22001051FA /* Music Queue.app */;
+			productReference = 2E223A0E1922EB22001051FA /* Power Hour.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2E223A2D1922EB22001051FA /* Music QueueTests */ = {
+		2E223A2D1922EB22001051FA /* Power HourTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2E223A431922EB22001051FA /* Build configuration list for PBXNativeTarget "Music QueueTests" */;
+			buildConfigurationList = 2E223A431922EB22001051FA /* Build configuration list for PBXNativeTarget "Power HourTests" */;
 			buildPhases = (
 				2E223A2A1922EB22001051FA /* Sources */,
 				2E223A2B1922EB22001051FA /* Frameworks */,
@@ -269,9 +269,9 @@
 			dependencies = (
 				2E223A351922EB22001051FA /* PBXTargetDependency */,
 			);
-			name = "Music QueueTests";
+			name = "Power HourTests";
 			productName = "Music QueueTests";
-			productReference = 2E223A2E1922EB22001051FA /* Music QueueTests.xctest */;
+			productReference = 2E223A2E1922EB22001051FA /* Power HourTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -292,7 +292,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2E223A091922EB22001051FA /* Build configuration list for PBXProject "Music Queue" */;
+			buildConfigurationList = 2E223A091922EB22001051FA /* Build configuration list for PBXProject "Power Hour" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -304,8 +304,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2E223A0D1922EB22001051FA /* Music Queue */,
-				2E223A2D1922EB22001051FA /* Music QueueTests */,
+				2E223A0D1922EB22001051FA /* Power Hour */,
+				2E223A2D1922EB22001051FA /* Power HourTests */,
 			);
 		};
 /* End PBXProject section */
@@ -369,7 +369,7 @@
 /* Begin PBXTargetDependency section */
 		2E223A351922EB22001051FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2E223A0D1922EB22001051FA /* Music Queue */;
+			target = 2E223A0D1922EB22001051FA /* Power Hour */;
 			targetProxy = 2E223A341922EB22001051FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -474,9 +474,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Music Queue/Music Queue-Prefix.pch";
-				INFOPLIST_FILE = "Music Queue/Music Queue-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Music Queue/Power Hour-Prefix.pch";
+				INFOPLIST_FILE = "Music Queue/Power Hour-Info.plist";
+				PRODUCT_NAME = "Power Hour";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -490,9 +490,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Music Queue/Music Queue-Prefix.pch";
-				INFOPLIST_FILE = "Music Queue/Music Queue-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Music Queue/Power Hour-Prefix.pch";
+				INFOPLIST_FILE = "Music Queue/Power Hour-Info.plist";
+				PRODUCT_NAME = "Power Hour";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -513,8 +513,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Music QueueTests/Music QueueTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Music QueueTests/Power HourTests-Info.plist";
+				PRODUCT_NAME = "Power HourTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -531,8 +531,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Music Queue/Music Queue-Prefix.pch";
-				INFOPLIST_FILE = "Music QueueTests/Music QueueTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Music QueueTests/Power HourTests-Info.plist";
+				PRODUCT_NAME = "Power HourTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -541,7 +541,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2E223A091922EB22001051FA /* Build configuration list for PBXProject "Music Queue" */ = {
+		2E223A091922EB22001051FA /* Build configuration list for PBXProject "Power Hour" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E223A3E1922EB22001051FA /* Debug */,
@@ -550,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E223A401922EB22001051FA /* Build configuration list for PBXNativeTarget "Music Queue" */ = {
+		2E223A401922EB22001051FA /* Build configuration list for PBXNativeTarget "Power Hour" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E223A411922EB22001051FA /* Debug */,
@@ -559,7 +559,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2E223A431922EB22001051FA /* Build configuration list for PBXNativeTarget "Music QueueTests" */ = {
+		2E223A431922EB22001051FA /* Build configuration list for PBXNativeTarget "Power HourTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E223A441922EB22001051FA /* Debug */,

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "JAMusicLibraryViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface JACreatorViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface JACreatorViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+
+@property (nonatomic, strong) MPMediaItem *song;
+@property (nonatomic, strong) NSNumber *flags;
 
 @end
